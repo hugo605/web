@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inicio</title>
+
+    <link rel="stylesheet" href="css/styleBarra.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css">
+    <style>
+
+
+@font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-Light.woff") format("woff");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-Medium.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-SemiBold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+    }
+    </style>
+</head>
+<body>
+      
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <div class="nav-icon active" id="homeBtn">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </div>
+        <div class="nav-icon">
+            <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+                <span>Facebook</span>
+            </a>
+        </div>
+        <div class="nav-icon calculator" id="calcBtn">
+            <i class="fas fa-calculator"></i>
+            <span>Calcular</span>
+        </div>
+        <div class="nav-icon" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </div>
+        <div class="nav-icon">
+            <a href="https://tiktok.com" target="_blank">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Modal de la calculadora -->
+    <div class="modal-overlayI" id="calculatorModal">
+        <div class="modal-contentI calculator-modal">
+            <div class="modal-headerI">
+                <h2><i class="fas fa-calculator"></i> Calculadora de Cemento Cola</h2>
+                <button class="close-btn" id="closeCalcBtn">&times;</button>
+            </div>
+            <div class="modal-bodyI">
+                <form id="calculatorForm">
+                    <div class="form-groupI">
+                        <label for="product">Selecciona un producto:</label>
+                        <select id="product" required>
+                            <option value="" disabled selected>-- Selecciona un producto --</option>
+                            <option value="porcelanato-celeste">Porcelanato Celeste</option>
+                            <option value="porcelanato-dorado">Porcelanato Dorado</option>
+                            <option value="ceramica-verde">Cerámica Verde</option>
+                            <option value="ceramica-rojo">Cerámica Rojo</option>
+                            <option value="cemento-blanco">Cemento Blanco</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="area">Área a cubrir (metros cuadrados):</label>
+                        <input type="number" id="area" placeholder="Ingresa los m²" min="0" step="0.1" required>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-label">Bolsas requeridas:</div>
+                        <div class="result-value" id="result">0</div>
+                        <div class="product-description" id="product-info">Seleccione un producto e ingrese el área</div>
+                    </div>
+                    
+                    <div class="note">
+                        <p><i class="fas fa-info-circle"></i> <strong>Nota importante:</strong> Este cálculo es aproximado. Recomendamos comprar un 10% adicional para cubrir posibles desperdicios y errores durante la aplicación.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de WhatsApp -->
+    <div class="modal-overlayI" id="whatsappModal">
+        <div class="modal-contentI whatsapp-modal">
+            <div class="modal-headerI">
+                <h2><i class="fab fa-whatsapp"></i> Enviar Mensaje por WhatsApp</h2>
+                <button class="close-btn" id="closeWhatsappBtn">&times;</button>
+            </div>
+            <div class="modal-bodyI">
+                <form id="whatsappForm">
+                    <div class="form-groupI">
+                        <label for="name">Tu Nombre:</label>
+                        <input type="text" id="name" placeholder="Ingresa tu nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Tu Número (opcional):</label>
+                        <input type="tel" id="phone" placeholder="Ej: +591 74911123">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" placeholder="Escribe tu mensaje aquí..." rows="4" required>Hola, me gustaría obtener más información sobre sus servicios.</textarea>
+                    </div>
+                    
+                    <div class="whatsapp-info">
+                        <p><i class="fas fa-info-circle"></i> Este mensaje será enviado a nuestro número de WhatsApp: <strong>+591 74911902</strong></p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Botón flotante de descarga -->
+        <a href="https://drive.google.com/uc?export=download&id=1cKq7WALPI5rJKCTG1xx-c70XSbATAr9B" 
+        class="download-btn" 
+        id="downloadBtn"
+        download="Catalogo_Productos_Premium.pdf">
+         <i class="fas fa-file-download"></i>
+         <span>Descargar Catálogo</span>
+          </a>
+
+
+<script src="js/barra.js"></script>
+
+</body>
+</html>

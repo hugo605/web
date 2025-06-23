@@ -1,0 +1,471 @@
+     
+        /* Barra inferior minimalista */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.562);
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
+            padding: 12px 10px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-around;
+            height: 75px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            height: 100%;
+            color: #555;
+        }
+        
+        .nav-icon a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .nav-icon i {
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+            margin-bottom: 4px;
+            color: #444343;
+        }
+        
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: #555;
+        }
+        
+        .nav-icon:hover i,
+        .nav-icon.active i {
+            color: #18466A;
+            transform: translateY(-3px);
+        }
+        
+        .nav-icon:hover span,
+        .nav-icon.active span {
+            color: #18466A;
+        }
+        
+        /* Línea de selección flotante */
+        .nav-icon::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #757575;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .nav-icon.active::after,
+        .nav-icon:hover::after {
+            width: 70%;
+            opacity: 1;
+        }
+        
+        /* Icono de calcular con círculo */
+        .nav-icon.calculator {
+            position: relative;
+        }
+        
+        .nav-icon.calculator i {
+            background: linear-gradient(135deg, #f17a0b, #e6a211);
+            color: white !important;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1.8rem;
+            z-index: 2;
+        }
+        
+        .nav-icon.calculator span {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+
+        /* Modales */
+        .modal-overlayI {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-contentI {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+        
+        .modal-headerI {
+            padding: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-weight: 600;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .modal-header h2 i {
+            margin-right: 12px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fdfdfd;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-btn:hover {
+            background: rgba(0,0,0,0.05);
+            transform: rotate(90deg);
+        }
+        
+        .modal-bodyI {
+            padding: 20px;
+        }
+        
+        /* Modal de calculadora */
+        .calculator-modal .modal-headerI {
+            background: linear-gradient(135deg, #1c80af, #1c80af);
+            color: white;
+        }
+        
+        .calculator-modal .modal-header h2 i {
+            color: white;
+        }
+        
+        .calculator-modal .close-btn {
+            color: white;
+        }
+        
+        .calculator-modal .close-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .form-groupI {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #181818;
+            font-size: 1.05rem;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: rgb(255, 255, 255);
+            color: #333;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .calculator-modal select:focus, 
+        .calculator-modal input:focus {
+            border-color: #90989b9d;
+            box-shadow: 0 0 0 4px rgba(179, 173, 173, 0.15);
+        }
+        
+        .result-box {
+            background: linear-gradient(135deg, #fafafa, #ffffff);
+            border: 2px solid #dddddd;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #444546;
+            margin: 10px 0;
+        }
+        
+        .result-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .product-description {
+            color: #777;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+        
+        .note {
+            background-color: #e3fafd;
+            border-left: 4px solid #4e9fd4;
+            padding: 16px;
+            margin-top: 25px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Modal de WhatsApp */
+        .whatsapp-modal .modal-headerI {
+            background: linear-gradient(135deg, #1CC660, #1CC660);
+            color: white;
+        }
+        
+        .whatsapp-modal .modal-headerI h2 i {
+            color: white;
+        }
+        
+        .whatsapp-modal .close-btn {
+            color: white;
+        }
+        .whatsapp-modal .close-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .whatsapp-modal textarea:focus {
+            border-color: #1CC660;
+            box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15);
+        }
+        
+        .whatsapp-modal .submit-btn {
+            background: linear-gradient(135deg, #1CC660, #1CC660);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .whatsapp-modal .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-info {
+            background-color: #f0f8ff;
+            border-left: 4px solid #25D366;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            
+            .nav-iconI i {
+                font-size: 1rem;
+            }
+            
+            .nav-icon.calculator i {
+                width: 55px;
+                height: 55px;
+                font-size: 1.7rem;
+                top: -28px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .bottom-bar {
+                height: 70px;
+                padding: 10px 5px;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+            
+            .nav-icon span {
+                font-size: 0.7rem;
+            }
+            
+            .nav-icon i {
+                font-size: 1.4rem;
+            }
+            
+            .nav-icon.calculator i {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+                top: -25px;
+            }
+            
+            .modal-bodyI {
+                padding: 10px;
+            }
+            
+            .result-value {
+                font-size: 2.2rem;
+            }
+        }
+
+                /* Botón flotante de descarga */
+            .download-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #18466A, #2c84d6);
+            color: white;
+            padding: 18px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(49, 49, 49, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(51, 48, 48, 0.5);
+        }
+        
+        .download-btn i {
+            margin-right: 12px;
+            font-size: 1.5rem;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 167, 167, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+      
+        /* Responsive */
+        @media (max-width: 768px) {
+             
+            .download-btn {
+                bottom: 80px;
+                right: 20px;
+                padding: 15px 20px;
+                font-size: 0.9rem;
+            }        
+            .download-btn i {
+                font-size: 1.3rem;
+            }
+        }    
+        @media (max-width: 480px) {
+   
+            
+            .download-btn span {
+                display: none;
+            }
+            
+            .download-btn i {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+        }

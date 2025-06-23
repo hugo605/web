@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio-Uniblock</title>
+    <link rel="stylesheet" href="css/styleBarra.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css">
+   
+    <style>
+ @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-Light.woff") format("woff");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-Medium.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/montserrat/Montserrat-SemiBold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/hero1.jpg") center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: -18px;
+            animation: gradientBG 15s ease infinite;
+            
+        }
+/* CTA Section */
+.cta {
+  padding: 100px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/her8.jpg") center/cover no-repeat;
+  color: white;
+  text-align: center;
+}
+    </style>
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                        <img src="img/logo.png" alt="Cemento Cola Uniblock" width="180">
+                    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <nav class="navbar" id="navbar">
+                        <ul class="nav-menu">
+                        <li><a href="index.html"class="active">Inicio</a></li>
+                        <li><a href="products.html">Productos</a></li>
+                        <li><a href="sobreNosotros.html">Nosotros</a></li>
+                        <li><a href="contact.html">Contacto</a></li>
+                    </ul>
+                </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content2">
+
+                <h1>transformando <span>ideas</span>  en soluciones innovadoras</h1>
+                <p>Somos líderes en nuestra industria, ofreciendo productos de calidad que superan las expectativas.</p>
+            </div>
+
+                <div>
+                    
+                    <a href="contact.html" class="btn2 btn-outline">Contáctanos</a>
+         
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features2">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Por Qué Elegirnos</h2>
+                <p>Descubre las ventajas que nos hacen diferentes</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Calidad Premium</h3>
+                    <p>Nuestros productos están fabricados con los más altos estándares de calidad y materiales duraderos.</p>
+                </div>
+                <div class="feature-card animate delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovación Constante</h3>
+                    <p>Invertimos en investigación para ofrecer soluciones innovadoras que marcan tendencia en el mercado.</p>
+                </div>
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Soporte 24/7</h3>
+                    <p>Nuestro equipo de soporte está disponible en todo momento para resolver tus dudas y problemas.</p>
+                </div>
+                <div class="feature-card animate delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Envío Rápido</h3>
+                    <p>Entregamos tus productos en tiempo récord, sin importar donde te encuentres.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- seccion de productos -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Productos Destacados</h2>
+                <p>Descubre nuestros productos más populares y solicitados</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card animate">
+                    <div class="product-badge">Nuevo</div>
+                    <div class="product-image">
+                        <img src="img/rojo3.jpg">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cerámica Gris</h3>
+                        <div class="price">Bs 18.50 <span class="old-price">Bs 20.50</span></div>
+                        <p>Adhesivo de alta resistencia para áreas de alto tráfico</p>
+                        <a href="products.html" class="btn-small">Ver Detalles</a>
+                    </div>
+                </div>
+
+
+                <div class="product-card animate delay-1">
+                    <div class="product-badge">25% Descuento</div>
+                    <div class="product-image">
+                        <img src="img/dorado4.jpg" alt="Producto Premium">
+                    </div>
+                    <div class="product-info">
+                        <h3>Porcelanato Impermeable</h3>
+                        <div class="price">Bs 18.35<span class="old-price">Bs 24.45</span></div>
+                        <p>Adhesivo premium para instalaciones críticas de porcelanato</p>
+                        <a href="products.html" class="btn-small">Ver Detalles</a>
+                    </div>
+                </div>
+
+                <div class="product-card animate delay-2">
+                    <div class="product-badge">TOP DE VENTAS</div>
+                    <div class="product-image">
+                        <img src="img/verde.jpg" alt="ceramica-rojo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cerámica Gris</h3>
+                        <div class="price">Bs 17.45 <span class="old-price">Bs 20.50</span></div>
+                        <p>Adhesivo versátil para cerámicas tradicionales y de bajo absorción</p>
+                        <a href="products.html" class="btn-small">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="products.html" class="btn2">Ver Todos los Productos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item animate">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-text">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item animate delay-1">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-text">Productos Innovadores</div>
+                </div>
+                <div class="stat-item animate delay-2">
+                    <div class="stat-number">+15</div>
+                    <div class="stat-text">Años de Experiencia</div>
+                </div>
+                <div class="stat-item animate delay-3">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-text">Satisfacción del Cliente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>Experiencias reales que nos inspiran a seguir mejorando</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate">
+                    <div class="testimonial-content">
+                        "Trabajar con esta empresa ha transformado nuestro negocio. Su enfoque profesional y soluciones innovadoras superaron todas nuestras expectativas. ¡Recomendados 100%!"
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">
+                            <img src=" " alt="Cliente">
+                        </div>
+                        <div class="client-details">
+                            <h4>Juana Mamani</h4>
+                            <p>Gerente, Ferreteria INNOVATEC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate delay-1">
+                    <div class="testimonial-content">
+                        "El equipo demostró un compromiso excepcional con nuestro proyecto. Su atención al detalle y capacidad para resolver desafíos complejos nos impresionó profundamente."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">
+                            <img src=" " alt="Cliente">
+                        </div>
+                        <div class="client-details">
+                            <h4>Freddy Rodriguez</h4>
+                            <p>Comercializador</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate delay-2">
+                    <div class="testimonial-content">
+                        "Su enfoque centrado en el cliente es notable. No solo cumplieron con los plazos y presupuesto, sino que agregaron valor en cada etapa del proyecto. Una verdadera asociación."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-avatar">
+                            <img src=" " alt="Cliente">
+                        </div>
+                        <div class="client-details">
+                            <h4>David Ramírez</h4>
+                            <p>Directora de Operaciones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>¿Listo para Transformar tu Experiencia?</h2>
+            <p>Únete a miles de clientes satisfechos que ya están disfrutando de nuestros productos y servicios de calidad premium.</p>
+            <a href="contact.html" class="btn2">Empezar Ahora</a>
+        </div>
+    </section>
+
+    
+    <!-- Pie de pagina -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+
+                    <img src="img/blanco.png" alt="UNIBLOCK" height="40">
+    
+                    <p>Especialistas en adhesivos para cerámica y porcelanato. Soluciones profesionales para constructores y remodeladores.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1Bvs197YpP/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com"target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com"target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Productos</a></li>
+                        <li><a href="sobreNosotros.html"><i class="fas fa-chevron-right"></i> Sobre Nosotros</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d122418.47040690074!2d-68.19862784607912!3d-16.496932803037968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sbo!4v1749357023134!5m2!1ses-419!2sbo"target="_blank" ><i class="fas fa-map-marker-alt"></i> El Alto, La Paz-Bolivia </a></li>
+                        <li><a href="tel:+591-73287793"><i class="fas fa-phone"></i> +591-73287793</a></li>
+                        <li><a href="mailto:huguitoshg17@gmail.com"target="_blank"><i class="fas fa-envelope"></i> info@uniblock.com</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Lunes-Viernes: 8:00 AM - 6:00 PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright &copy; 2025 UNIBLOCK Todos los derechos reservados. | Diseñado por <a class="navbar-brand align-self-center" href="https://facebook.com/"target="_blank">
+                    <img src="img/LOGO PIXEL.webp" alt="UNIBLOCK" height="40">
+                </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-title">Producto</h2>
+                <div class="product-color" id="modal-color"></div>
+                <p id="modal-description">Descripción del producto</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-image" src="" alt="Producto">
+                </div>
+                <div class="modal-details">
+                    <h3>Especificaciones Técnicas</h3>
+                    <ul class="specs-list" id="specs-list">
+                        <!-- Las especificaciones se cargarán dinámicamente -->
+                    </ul>
+                    <h3>Aplicaciones Recomendadas</h3>
+                    <p id="modal-applications"></p>
+                    <a href="#" class="action-btn btn-whatsapp" id="modal-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="bottom-bar">
+        <a href="index.html">
+        <div class="nav-icon active" id="homeBtn">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        </div>
+
+        <div class="nav-icon">
+            <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+                <span>Facebook</span>
+            </a>
+        </div>
+        <div class="nav-icon calculator" id="calcBtn">
+            <i class="fas fa-calculator"></i>
+            <span>Calcular</span>
+        </div>
+        <div class="nav-icon" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </div>
+        <div class="nav-icon">
+            <a href="https://tiktok.com" target="_blank">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+        </div>
+    </div>
+    
+
+
+    <!-- Modal de la calculadora -->
+    <div class="modal-overlayI" id="calculatorModal">
+        <div class="modal-contentI calculator-modal">
+            <div class="modal-headerI">
+                <h2><i class="fas fa-calculator"></i> Calculadora de Cemento Cola</h2>
+                <button class="close-btn" id="closeCalcBtn">&times;</button>
+            </div>
+            <div class="modal-bodyI">
+                <form id="calculatorForm">
+                    <div class="form-groupI">
+                        <label for="product">Selecciona un producto:</label>
+                        <select id="product" required>
+                            <option value="" disabled selected>-- Selecciona un producto --</option>
+                            <option value="porcelanato-celeste">Porcelanato Celeste</option>
+                            <option value="porcelanato-dorado">Porcelanato Dorado</option>
+                            <option value="ceramica-verde">Cerámica Verde</option>
+                            <option value="ceramica-rojo">Cerámica Rojo</option>
+                            <option value="cemento-blanco">Cemento Blanco</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="area">Área a cubrir (metros cuadrados):</label>
+                        <input type="number" id="area" placeholder="Ingresa los m²" min="0" step="0.1" required>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-label">Bolsas requeridas:</div>
+                        <div class="result-value" id="result">0</div>
+                        <div class="product-description" id="product-info">Seleccione un producto e ingrese el área</div>
+                    </div>
+                    
+                    <div class="note">
+                        <p><i class="fas fa-info-circle"></i> <strong>Nota importante:</strong> Este cálculo es aproximado. Recomendamos comprar un 10% adicional para cubrir posibles desperdicios y errores durante la aplicación.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de WhatsApp -->
+    <div class="modal-overlayI" id="whatsappModal">
+        <div class="modal-contentI whatsapp-modal">
+            <div class="modal-headerI">
+                <h2><i class="fab fa-whatsapp"></i> Enviar Mensaje por WhatsApp</h2>
+                <button class="close-btn" id="closeWhatsappBtn">&times;</button>
+            </div>
+            <div class="modal-bodyI">
+                <form id="whatsappForm">
+                    <div class="form-groupI">
+                        <label for="name">Tu Nombre:</label>
+                        <input type="text" id="name" placeholder="Ingresa tu nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Tu Número (opcional):</label>
+                        <input type="tel" id="phone" placeholder="Ej: +591 74911123">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" placeholder="Escribe tu mensaje aquí..." rows="4" required>Hola, me gustaría obtener más información sobre sus servicios.</textarea>
+                    </div>
+                    
+                    <div class="whatsapp-info">
+                        <p><i class="fas fa-info-circle"></i> Este mensaje será enviado a nuestro número de WhatsApp: <strong>+591 74911902</strong></p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script src="js/barra.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel Hero Adaptable sin Librerías</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .hero-slider {
+            width: 100%;
+            height: 70vh;
+            min-height: 400px;
+            max-height: 700px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 20px, 40px;
+        }
+        
+        .slide-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .slide-text {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            color: #333;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+        
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: #00c9ff;
+            transform: scale(1.2);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+        
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            font-size: 1.2rem;
+            border: none;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: scale(1.1);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #00c9ff;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .responsive-info {
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .info-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #00c9ff;
+        }
+        
+        .info-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .device-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .device-icon {
+            font-size: 3rem;
+            color: #00c9ff;
+        }
+        
+        /* Media Queries para adaptabilidad */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .hero-slider {
+                height: 60vh;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .slide-title {
+                font-size: 1.6rem;
+            }
+            
+            .slide-text {
+                font-size: 1rem;
+            }
+            
+            .hero-slider {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero-slider {
+                height: 45vh;
+                min-height: 300px;
+            }
+            
+            .slide-content {
+                padding: 15px;
+            }
+            
+            .slide-title {
+                font-size: 1.4rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .feature-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .nav-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Carrusel Hero sin Librerías</h1>
+            <p class="subtitle">Diseñado para funcionar perfectamente en dispositivos móviles y Windows sin dependencias externas.</p>
+        </header>
+        
+        <div class="hero-slider" id="heroSlider">
+            <div class="slider-container" id="sliderContainer">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Paisaje montañoso" class="slide-image">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Código Puro</h2>
+                        <p class="slide-text">Este carrusel funciona con HTML, CSS y JavaScript puro, sin librerías externas.</p>
+                        <a href="#" class="btn">Ver más</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Montañas con nieve" class="slide-image">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Totalmente Adaptable</h2>
+                        <p class="slide-text">Se ajusta automáticamente a cualquier tamaño de pantalla y dispositivo.</p>
+                        <a href="#" class="btn">Explorar</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Bosque nevado" class="slide-image">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Rendimiento Óptimo</h2>
+                        <p class="slide-text">Código ligero que garantiza tiempos de carga rápidos en todas las plataformas.</p>
+                        <a href="#" class="btn">Comenzar</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1511497584788-876760111969" alt="Camino en el bosque" class="slide-image">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Interacción Total</h2>
+                        <p class="slide-text">Controles táctiles para móviles y navegación con ratón para escritorio.</p>
+                        <a href="#" class="btn">Descubrir</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles de navegación -->
+            <div class="slider-nav">
+                <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <!-- Puntos de paginación -->
+            <div class="slider-controls" id="sliderControls"></div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="feature-title">Sin Dependencias</h3>
+                <p class="feature-desc">Implementado con JavaScript puro sin librerías externas.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Mobile First</h3>
+                <p class="feature-desc">Diseñado primero para móviles con adaptación progresiva.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3 class="feature-title">Rendimiento</h3>
+                <p class="feature-desc">Código optimizado para máxima velocidad de carga.</p>
+            </div>
+        </div>
+        
+        <div class="responsive-info">
+            <h2 class="info-title">Adaptabilidad Total</h2>
+            <p class="info-text">Este carrusel hero se adapta dinámicamente a diferentes tamaños de pantalla:</p>
+            
+            <div class="device-icons">
+                <div>
+                    <i class="fas fa-mobile device-icon"></i>
+                    <p>Móviles</p>
+                </div>
+                <div>
+                    <i class="fas fa-tablet-alt device-icon"></i>
+                    <p>Tablets</p>
+                </div>
+                <div>
+                    <i class="fas fa-laptop device-icon"></i>
+                    <p>Escritorio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderContainer = document.getElementById('sliderContainer');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const sliderControls = document.getElementById('sliderControls');
+            let currentSlide = 0;
+            let autoSlideInterval;
+            
+            // Crear puntos de control
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if(index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                sliderControls.appendChild(dot);
+            });
+            
+            // Función para ir a un slide específico
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                updateSlider();
+            }
+            
+            // Actualizar el slider
+            function updateSlider() {
+                sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Actualizar puntos de control
+                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    if(index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Navegación al slide anterior
+            function prevSlide() {
+                currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+                updateSlider();
+            }
+            
+            // Navegación al slide siguiente
+            function nextSlide() {
+                currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+                updateSlider();
+            }
+            
+            // Event listeners para los botones
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Iniciar autoplay
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Pausar autoplay
+            function pauseAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+            
+            // Eventos para pausar al interactuar
+            sliderContainer.addEventListener('mouseenter', pauseAutoSlide);
+            sliderContainer.addEventListener('touchstart', pauseAutoSlide);
+            sliderContainer.addEventListener('mouseleave', startAutoSlide);
+            
+            // Swipe para móviles
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            sliderContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            sliderContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const diff = touchStartX - touchEndX;
+                // Sensibilidad de swipe
+                if (diff > 50) {
+                    nextSlide();
+                } else if (diff < -50) {
+                    prevSlide();
+                }
+            }
+            
+            // Iniciar
+            startAutoSlide();
+            updateSlider();
+            
+            // Adaptar al redimensionar la ventana
+            window.addEventListener('resize', updateSlider);
+        });
+    </script>
+</body>
+</html>

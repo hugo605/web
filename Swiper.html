@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Moderno con Swiper Local</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .hero-slider {
+            width: 100%;
+            height: 75vh;
+            min-height: 450px;
+            max-height: 800px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            margin-bottom: 40px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-slider:hover {
+            transform: translateY(-10px);
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(1.05);
+            transition: transform 8s ease-out;
+            filter: brightness(0.8);
+        }
+        
+        .swiper-slide-active .slide-image {
+            transform: scale(1);
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            background: rgba(15, 15, 35, 0.6);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            margin: 0 20px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .swiper-slide-active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .slide-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        
+        .slide-text {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(25deg);
+            transition: all 0.6s;
+        }
+        
+        .btn:hover:after {
+            left: 120%;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 1.5rem !important;
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            background: white !important;
+            opacity: 0.3 !important;
+            width: 12px !important;
+            height: 12px !important;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1 !important;
+            background: #ff8a00 !important;
+            width: 30px !important;
+            border-radius: 10px !important;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .feature-desc {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Media Queries para adaptabilidad */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slide-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .slide-title {
+                font-size: 2.2rem;
+            }
+            
+            .slide-text {
+                font-size: 1.2rem;
+            }
+            
+            .hero-slider {
+                height: 65vh;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .slide-text {
+                font-size: 1.1rem;
+            }
+            
+            .hero-slider {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .swiper-button-next, .swiper-button-prev {
+                display: none;
+            }
+            
+            .btn {
+                padding: 13px 35px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero-slider {
+                height: 55vh;
+                min-height: 350px;
+                border-radius: 15px;
+            }
+            
+            .slide-content {
+                padding: 25px;
+                margin: 0 15px;
+            }
+            
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hero Moderno con Swiper Local</h1>
+            <p class="subtitle">Diseño elegante y adaptable utilizando la librería Swiper 11.2.8 desde tu disco local</p>
+        </header>
+        
+     
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <img src="img/banner_img_03.jpg" alt="Paisaje montañoso" class="slide-image">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Diseño Elegante</h2>
+                            <p class="slide-text">Transiciones suaves y efectos visuales modernos que mejoran la experiencia del usuario.</p>
+                            <a href="#" class="btn">Explorar</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <img src="img/facebook 3.jpg" alt="Montañas con nieve" class="slide-image">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Totalmente Adaptable</h2>
+                            <p class="slide-text">Funciona perfectamente en dispositivos móviles, tablets y escritorio.</p>
+                            <a href="#" class="btn">Ver Demostración</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <img src="img/hero.jpg" alt="Bosque nevado" class="slide-image">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Efectos Modernos</h2>
+                            <p class="slide-text">Animaciones sutiles y efectos de hover que crean una experiencia inmersiva.</p>
+                            <a href="#" class="btn">Comenzar</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <img src="img/facebook 3.jpg" alt="Camino en el bosque" class="slide-image">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Rendimiento Optimizado</h2>
+                            <p class="slide-text">Carga rápida gracias al uso de recursos locales y técnicas modernas.</p>
+                            <a href="#" class="btn">Descubrir</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles del carrusel -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">Rendimiento Acelerado</h3>
+                <p class="feature-desc">Al utilizar la librería Swiper desde tu disco local, garantizamos tiempos de carga mínimos y máxima fluidez.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">Diseño Premium</h3>
+                <p class="feature-desc">Efectos visuales modernos, gradientes sutiles y transiciones elegantes que destacan tu contenido.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Adaptabilidad Total</h3>
+                <p class="feature-desc">Diseño que se ajusta perfectamente a cualquier dispositivo y tamaño de pantalla.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Hero Moderno con Swiper 11.2.8 | Diseño adaptable para todos los dispositivos</p>
+        </div>
+    </div>
+
+    <!-- Enlaces locales a Swiper -->
+    <link rel="stylesheet" href="swiper/swiper-bundle.min.css">
+    <script src="swiper/swiper-bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
+                speed: 1000,
+                grabCursor: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                // Configuración responsive
+                breakpoints: {
+                    768: {
+                        navigation: {
+                            enabled: true
+                        }
+                    },
+                    0: {
+                        navigation: {
+                            enabled: false
+                        }
+                    }
+                }
+            });
+            
+            // Pausar autoplay al pasar el ratón
+            swiper.el.addEventListener('mouseenter', () => {
+                swiper.autoplay.stop();
+            });
+            
+            swiper.el.addEventListener('mouseleave', () => {
+                swiper.autoplay.start();
+            });
+            
+            // Efecto de paralaje sutil
+            const slides = document.querySelectorAll('.swiper-slide');
+            slides.forEach(slide => {
+                const img = slide.querySelector('.slide-image');
+                slide.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                    img.style.transform = `scale(1.03) translate(${x}px, ${y}px)`;
+                });
+                
+                slide.addEventListener('mouseleave', () => {
+                    img.style.transform = 'scale(1.03)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
